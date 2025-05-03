@@ -1,23 +1,133 @@
-// trigger to play music in the background with sweetalert
-window.addEventListener('load', () => {
-    Swal.fire({
-        title: 'Do you want to play music in the background?',
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.querySelector('.song').play();
-            animationTimeline();
-        } else {
-            animationTimeline();
-        }
-    });
-});
+// Check if it's June 3rd
+const checkBirthdayDate = () => {
+    const today = new Date();
+    const isBirthday = today.getMonth() === 5 && today.getDate() === 3; // June is month 5 (0-indexed)
+    return isBirthday;
+};
 
+// Calculate time remaining until next birthday
+const getTimeRemaining = (endtime) => {
+    const total = Date.parse(endtime) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+    
+    return {
+        total,
+        days,
+        hours,
+        minutes,
+        seconds
+    };
+};
+
+// Initialize and update the countdown clock
+const initializeClock = (nextBirthday) => {
+    const countdownElement = document.createElement('div');
+    countdownElement.className = 'countdown';
+    countdownElement.innerHTML = `
+        <img src="https://c.tenor.com/xo5cxbOgS8sAAAAd/tenor.gif"></img>
+        <h1>Mai Anh's Birthday Countdown</h1>
+        <div class="countdown-timer">
+            <div class="countdown-item">
+                <span class="days">00</span>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <span class="hours">00</span>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <span class="minutes">00</span>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <span class="seconds">00</span>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        <p>until mai anh's birthday on June 3rd!</p>
+        <div class="birthday-message">À há phát hiện có đứa vào link xem trước ngày sinh nhật nhe!</div>
+    `;
+    document.querySelector('.container').innerHTML = '';
+    document.querySelector('.container').appendChild(countdownElement);
+    
+    const daysSpan = document.querySelector('.days');
+    const hoursSpan = document.querySelector('.hours');
+    const minutesSpan = document.querySelector('.minutes');
+    const secondsSpan = document.querySelector('.seconds');
+    
+    // Update clock function
+    function updateClock() {
+        const t = getTimeRemaining(nextBirthday);
+        
+        // Add leading zeros
+        daysSpan.innerHTML = t.days.toString().padStart(2, '0');
+        hoursSpan.innerHTML = t.hours.toString().padStart(2, '0');
+        minutesSpan.innerHTML = t.minutes.toString().padStart(2, '0');
+        secondsSpan.innerHTML = t.seconds.toString().padStart(2, '0');
+        
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+            // Refresh page to show birthday content if it's June 3rd
+            if (checkBirthdayDate()) {
+                window.location.reload();
+            }
+        }
+    }
+    
+    updateClock(); // Run once immediately
+    const timeinterval = setInterval(updateClock, 1000);
+};
+
+// Show birthday content only on June 3rd or if override is set
+const showBirthdayContent = () => {
+    // Check for debug parameter in URL to override date check
+    const urlParams = new URLSearchParams(window.location.search);
+    const debugMode = urlParams.get('debug') === 'true';
+    
+    if (checkBirthdayDate() || debugMode) {
+        // Birthday - show content and ask about music
+        Swal.fire({
+            title: 'Happy Birthday mai anh!',
+            text: 'Do you want to play music in the background?',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.querySelector('.song').play();
+                animationTimeline();
+            } else {
+                animationTimeline();
+            }
+        });
+    } else {
+        // Not birthday - show countdown
+        document.querySelector('.container').style.visibility = 'visible';
+        
+        // Calculate next birthday
+        const nextBirthday = new Date();
+        nextBirthday.setMonth(5); // June
+        nextBirthday.setDate(3);
+        // If this year's birthday has passed, set for next year
+        if (nextBirthday < new Date()) {
+            nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+        }
+        // Set time to midnight
+        nextBirthday.setHours(0, 0, 0, 0);
+        
+        // Initialize the countdown clock
+        initializeClock(nextBirthday);
+    }
+};
+
+// trigger when page loads
+window.addEventListener('load', showBirthdayContent);
 
 // animation timeline
 const animationTimeline = () => {
@@ -209,7 +319,6 @@ const animationTimeline = () => {
         0.7, {
             opacity: 0,
             y: -50,
-            // scale: 0.3,
             rotation: 150,
             skewX: "30deg",
             ease: Elastic.easeOut.config(1, 0.5),

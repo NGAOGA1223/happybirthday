@@ -5,6 +5,8 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
 }
 
 .song {
@@ -18,18 +20,87 @@ body {
   position: relative;
   text-align: center;
   visibility: hidden;
-  width: 100vw;
+  width: 100vw; 
 }
 
 .container > div {
   left: 0;
-  position: absolute;
+  position: flex;
   right: 0;
-  top: 20vh;
+  top: 15vh;
+  padding: 0 15px;
+}
+
+.container img {
+  position: flex;
+}
+
+/* Countdown styling */
+.countdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.countdown h1 {
+  font-size: 2.5rem;
+  color: #ff69b4;
+}
+
+.countdown h2 {
+  font-size: 2rem;
+}
+
+.countdown p {
+  font-size: 1.2rem;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.countdown-item span {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ff69b4;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.birthday-message {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #15a1ed;
+  margin-top: 2rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .one {
-  font-size: 4.5rem;
+  font-size: 4rem;
 }
 
 .two {
@@ -38,7 +109,7 @@ body {
 }
 
 .three {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .four .text-box {
@@ -47,12 +118,15 @@ body {
   margin: 0 auto;
   padding: 10px;
   position: relative;
-  width: 600px;
+  width: 90%;
+  max-width: 600px;
 }
 
 .text-box p {
   margin: 0;
   text-align: left;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .text-box span {
@@ -67,10 +141,11 @@ body {
   padding: .5rem 1rem;
   position: absolute;
   right: 0px;
+  font-size: 0.9rem;
 }
 
 .five p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   left: 0;
   position: absolute;
   right: 0;
@@ -83,7 +158,7 @@ body {
 }
 
 .five .idea-5 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .idea-5 span, .idea-6 span, .wish-hbd span {
@@ -91,9 +166,8 @@ body {
 }
 
 .idea-6 span{
-  font-size: 15rem;
+  font-size: 12rem;
 }
-
 
 .six {
   position: relative;
@@ -103,22 +177,24 @@ body {
 
 .six img {
   display: inline-block;
-  height: 350px;
   max-width: 100%;
-  /* height: auto; */
+  height: auto;
+  max-height: 35vh;
+  object-fit: contain;
 }
 
 .six .hat {
-  left: 41.5%;
   position: absolute;
-  /* transform: scale(0.1); */
-  top: -40%;
-  width: 60px; 
+  width: 60px;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .baloons img {
   display: inline-block;
   position: absolute;
+  max-width: 1000px;
 }
 
 .baloons img:nth-child(even) {
@@ -204,88 +280,168 @@ body {
 }
 
 .wish-hbd {
-  font-size: 3em;
+  font-size: 2.5em;
   margin: 0;
   text-transform: uppercase;
 }
 
 .wish h5 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: lighter;
   margin: 10px 0 0;
 }
 
 .nine p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: lighter;
 }
 
 #replay {
   cursor: pointer;
   z-index: 3;
+  text-decoration: underline;
+  color: #15a1ed;
 }
 
-/* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
+/* Media Queries - Improved responsive design */
+@media screen and (max-width: 768px) {
+  .one {
+    font-size: 3rem;
   }
-}
-
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
+  
+  .three {
+    font-size: 2rem;
   }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
+  
+  .text-box p {
+    font-size: 0.9rem;
   }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
+  
+  .five p {
+    font-size: 1.5rem;
   }
-}
-
-@media screen and (max-width: 500px) {
-  .container {
-    width: 90%;
+  
+  .five .idea-5 {
+    font-size: 2.5rem;
   }
-
-  .four .text-box {
-    width: 90%;
-  }
-
-  .text-box .fake-btn {
-    bottom: -55px;
-  }
-
-  .idea-5 span {
-    display: block;
-  }
-
+  
   .idea-6 span {
-    font-size: 10rem;
+    font-size: 8rem;
   }
-
-  .six .hat {
-    /* top: -20px; */
-    width: 50px;  
-  }
-
+  
   .wish-hbd {
-    font-size: 2.2em;
+    font-size: 2em;
   }
-
+  
   .wish h5 {
     font-size: 1.4rem;
   }
-
+  
   .nine p {
-    font-size: 1.5rem;
-    font-weight: lighter;
+    font-size: 1.4rem;
   }
+}
+
+@media screen and (max-width: 480px) {
+  .container > div {
+    top: 10vh;
+  }
+  
+  .one {
+    font-size: 2.5rem;
+  }
+  
+  .two {
+    font-size: 1rem;
+  }
+  
+  .three {
+    font-size: 1.8rem;
+  }
+  
+  .text-box .fake-btn {
+    bottom: -45px;
+    font-size: 0.8rem;
+  }
+  
+  .five p {
+    font-size: 1.2rem;
+  }
+  
+  .five .idea-5 {
+    font-size: 2rem;
+  }
+  
+  .idea-6 span {
+    font-size: 6rem;
+  }
+  
+  .six {
+    top: 5vh;
+  }
+  
+  .six .hat {
+    width: 40px;
+    top: -25px;
+  }
+  
+  .wish-hbd {
+    font-size: 1.8em;
+  }
+  
+  .wish h5 {
+    font-size: 1.2rem;
+  }
+  
+  .nine p {
+    font-size: 1.2rem;
+  }
+  
+  .countdown h1 {
+    font-size: 2rem;
+  }
+  
+  .countdown h2 {
+    font-size: 1.5rem;
+  }
+  
+  .countdown p {
+    font-size: 1rem;
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+  .one {
+    font-size: 2rem;
+  }
+  
+  .three {
+    font-size: 1.5rem;
+  }
+  
+  .idea-6 span {
+    font-size: 5rem;
+  }
+  
+  .wish-hbd {
+    font-size: 1.5em;
+  }
+}
+
+/* For tall but narrow screens */
+@media screen and (min-height: 800px) and (max-width: 480px) {
+  .six img {
+    max-height: 30vh;
+  }
+  
+  .six .hat {
+    top: -20px;
+  }
+}
+  .countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50px;
 }
