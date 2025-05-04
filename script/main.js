@@ -1,13 +1,27 @@
-// Check if it's June 3rd
+// Get current date in UTC+7 (Hanoi time zone)
+const getHanoiTime = () => {
+    const now = new Date();
+    
+    // Get the UTC time in milliseconds
+    const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+    
+    // Create a new date object with UTC+7 offset (Hanoi)
+    const hanoiTime = new Date(utcTime + (7 * 3600000));
+    
+    return hanoiTime;
+};
+
+// Check if it's June 3rd in Hanoi time
 const checkBirthdayDate = () => {
-    const today = new Date();
-    const isBirthday = today.getMonth() === 5 && today.getDate() === 3; // June is month 5 (0-indexed)
+    const hanoiTime = getHanoiTime();
+    const isBirthday = hanoiTime.getMonth() === 5 && hanoiTime.getDate() === 3; // June is month 5 (0-indexed)
     return isBirthday;
 };
 
-// Calculate time remaining until next birthday
+// Calculate time remaining until next birthday (in Hanoi time)
 const getTimeRemaining = (endtime) => {
-    const total = Date.parse(endtime) - Date.parse(new Date());
+    const hanoiNow = getHanoiTime();
+    const total = Date.parse(endtime) - Date.parse(hanoiNow);
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
@@ -48,6 +62,7 @@ const initializeClock = (nextBirthday) => {
             </div>
         </div>
         <p>until mai anh's birthday on June 3rd!</p>
+        <p class="timezone-info">(Vietnam time - UTC+07)</p>
         <div class="birthday-message">À há phát hiện có đứa vào link xem trước ngày sinh nhật nhe!</div>
     `;
     document.querySelector('.container').innerHTML = '';
@@ -110,15 +125,18 @@ const showBirthdayContent = () => {
         // Not birthday - show countdown
         document.querySelector('.container').style.visibility = 'visible';
         
-        // Calculate next birthday
-        const nextBirthday = new Date();
+        // Calculate next birthday in Hanoi time
+        const hanoiTime = getHanoiTime();
+        const nextBirthday = new Date(hanoiTime);
         nextBirthday.setMonth(5); // June
         nextBirthday.setDate(3);
+        
         // If this year's birthday has passed, set for next year
-        if (nextBirthday < new Date()) {
+        if (nextBirthday < hanoiTime) {
             nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
         }
-        // Set time to midnight
+        
+        // Set time to midnight Hanoi time
         nextBirthday.setHours(0, 0, 0, 0);
         
         // Initialize the countdown clock
@@ -131,6 +149,9 @@ window.addEventListener('load', showBirthdayContent);
 
 // animation timeline
 const animationTimeline = () => {
+    // Mobile check - adjust animations for smaller screens
+    const isMobile = window.innerWidth <= 768;
+    
     // split chars that needs to be animated individually
     const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
     const hbd = document.getElementsByClassName("wish-hbd")[0];
@@ -293,14 +314,14 @@ const animationTimeline = () => {
             y: 1400,
         }, {
             opacity: 1,
-            y: -1000,
+            y: isMobile ? -500 : -1000, // Adjust for mobile
         },
         0.2
     )
     .from(
         ".profile-picture",
         0.5, {
-            scale: 3.5,
+            scale: isMobile ? 2 : 3.5, // Smaller scale on mobile
             opacity: 0,
             x: 25,
             y: -25,
@@ -353,7 +374,7 @@ const animationTimeline = () => {
         1.5, {
             visibility: "visible",
             opacity: 0,
-            scale: 80,
+            scale: isMobile ? 40 : 80, // Smaller scale on mobile
             repeat: 3,
             repeatDelay: 1.4,
         },
@@ -378,4 +399,4 @@ const animationTimeline = () => {
     replyBtn.addEventListener("click", () => {
         tl.restart();
     });
-}
+};
