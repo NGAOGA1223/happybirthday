@@ -168,19 +168,12 @@ body {
   cursor: pointer;
 }
 
-
-.five {
+.five p {
   font-size: clamp(1.2rem, 4vw, 2rem);
   position: relative;
   margin: 10px auto;
 }
 
-.five .idea-1 {
-  font-size: clamp(1.2rem, 4vw, 2rem);
-  position: relative;
-  margin: 10px auto;
-  top: 100px;
-}
 .idea-3 {
   font-size: clamp(1.8rem, 6vw, 3rem);
 }
@@ -223,7 +216,7 @@ body {
   max-width: 60px;
   width: 18%;
   top: 12%;
-  left: 49%;
+  left: 48%;
   transform: translateX(-50%);
 }
 
@@ -369,17 +362,11 @@ body {
   }
 }
 
-
 @media screen and (max-width: 480px) {
   .four .text-box {
     padding: 10px;
   }
-    .five p {
-    font-size: clamp(1.2rem, 4vw, 2rem);
-    position: relative;
-    margin: 10px auto;
-    top: 0
-  }
+  
   .text-box .fake-btn {
     bottom: -40px;
     padding: 0.3rem 0.8rem;
@@ -392,8 +379,6 @@ body {
   .six .hat {
     width: 50px;
     max-width: 15%;
-    top: 22%;
-    left: 47%;
   }
   
   .baloons img {
