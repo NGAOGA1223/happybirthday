@@ -63,7 +63,6 @@ const initializeClock = (nextBirthday) => {
         </div>
         <p>until mai anh's birthday on June 3rd!</p>
         <p class="timezone-info">(Vietnam time - UTC+07)</p>
-        <div class="birthday-message">À há phát hiện có đứa vào link xem trước ngày sinh nhật nhe!</div>
     `;
     document.querySelector('.container').innerHTML = '';
     document.querySelector('.container').appendChild(countdownElement);

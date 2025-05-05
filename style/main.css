@@ -3,7 +3,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -13,6 +15,7 @@ body {
   background-color: #f9f9f9;
   overflow-x: hidden;
   line-height: 1.6;
+  color: #333;
 }
 
 .song {
@@ -44,9 +47,10 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
+  padding: 0 20px;
 }
 
-/* Countdown styling */
+/* Countdown styling - IMPROVED */
 .countdown {
   display: flex;
   flex-direction: column;
@@ -55,36 +59,31 @@ body {
   height: 100%;
   text-align: center;
   padding: 0 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .countdown img {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .countdown h1 {
-  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   color: #ff69b4;
-  margin-bottom: 15px;
-}
-
-.countdown h2 {
-  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-  margin-bottom: 10px;
-}
-
-.countdown p {
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .countdown-timer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(0.5rem, 2vw, 1rem);
-  margin: 1rem 0;
+  gap: clamp(0.5rem, 2vw, 1.2rem);
+  margin: 1.5rem 0;
   flex-wrap: wrap;
 }
 
@@ -92,19 +91,43 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: clamp(60px, 15vw, 80px);
+  min-width: clamp(70px, 18vw, 100px);
+  background-color: white;
+  padding: 15px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.countdown-item:hover {
+  transform: translateY(-5px);
 }
 
 .countdown-item span {
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
   color: #ff69b4;
+  line-height: 1.2;
 }
 
 .countdown-label {
   font-size: clamp(0.8rem, 2.5vw, 1rem);
   margin-top: 0.5rem;
   color: #666;
+  font-weight: 500;
+}
+
+.countdown p {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  margin: 10px 0;
+  color: #555;
+  max-width: 90%;
+}
+
+.timezone-info {
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  color: #888;
+  margin-top: 5px;
 }
 
 .birthday-message {
@@ -114,13 +137,23 @@ body {
   margin-top: 2rem;
   animation: pulse 1.5s infinite;
   text-align: center;
-  padding: 0 15px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(21, 161, 237, 0.15);
+  max-width: 90%;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Content elements */
@@ -144,12 +177,18 @@ body {
   padding: 15px;
   position: relative;
   width: min(90%, 600px);
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .text-box p {
   margin: 0;
   text-align: left;
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .text-box span {
@@ -165,13 +204,23 @@ body {
   position: absolute;
   right: 0px;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
-  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+
+/* Fix for "That's what I was going to do" text */
 .five p {
   font-size: clamp(1.2rem, 4vw, 2rem);
   position: relative;
-  margin: 10px auto;
+  margin: 15px auto;
+  max-width: 90%;
+  padding: 0 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.idea-1 {
+  margin-top: 30px !important; /* Add more space above this text */
 }
 
 .idea-3 {
@@ -188,7 +237,9 @@ body {
   font-size: clamp(2.5rem, 8vw, 4rem);
 }
 
-.idea-5 span, .idea-6 span, .wish-hbd span {
+.idea-5 span,
+.idea-6 span,
+.wish-hbd span {
   display: inline-block;
 }
 
@@ -208,7 +259,8 @@ body {
   display: block;
   height: auto;
   max-width: min(90%, 350px);
-
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .six .hat {
@@ -238,7 +290,8 @@ body {
   left: 30%;
 }
 
-.seven, .eight {
+.seven,
+.eight {
   height: 100vh;
   position: fixed;
   top: 0;
@@ -311,6 +364,7 @@ body {
 .wish {
   padding: 0 20px;
   margin-top: 20px;
+  max-width: 90%;
 }
 
 .wish-hbd {
@@ -328,60 +382,67 @@ body {
 .nine {
   padding: 0 20px;
   text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .nine p {
   font-size: clamp(1.1rem, 3.5vw, 2rem);
   font-weight: lighter;
   margin: 15px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-#replay {
-  cursor: pointer;
-  z-index: 3;
-  text-decoration: underline;
-  color: #15a1ed;
-  display: inline-block;
-  margin-top: 10px;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-}
 
 /* Responsive Adjustments */
 @media screen and (max-height: 700px) {
-  
   .six img.profile-picture {
     max-width: min(80%, 280px);
   }
-  
+
   .countdown h1 {
     margin-bottom: 10px;
   }
-  
+
   .countdown-timer {
     margin: 0.5rem 0;
+  }
+  
+  .idea-1 {
+    margin-top: 20px !important; /* Less space on smaller heights */
   }
 }
 
 @media screen and (max-width: 480px) {
   .four .text-box {
-    padding: 10px;
+    padding: 15px;
   }
-  
+
   .text-box .fake-btn {
     bottom: -40px;
-    padding: 0.3rem 0.8rem;
+    padding: 0.5rem 1rem;
   }
-  
+
   .idea-5 span {
     display: block;
   }
-  
+
   .six .hat {
     width: 50px;
     max-width: 15%;
-  }
-  
+    top: 180px;  }
+
   .baloons img {
     max-width: 70vw;
+  }
+
+  .five p {
+    padding: 0 10px;
+    font-size: clamp(1rem, 4vw, 1.8rem);
+  }
+  
+  .idea-1 {
+    margin-top: 25px !important; /* Adjust for mobile */
   }
 }
