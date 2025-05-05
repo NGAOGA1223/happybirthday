@@ -3,9 +3,7 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
@@ -15,7 +13,6 @@ body {
   background-color: #f9f9f9;
   overflow-x: hidden;
   line-height: 1.6;
-  color: #333;
 }
 
 .song {
@@ -47,10 +44,9 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 0 20px;
 }
 
-/* Countdown styling - IMPROVED */
+/* Countdown styling */
 .countdown {
   display: flex;
   flex-direction: column;
@@ -124,12 +120,6 @@ body {
   max-width: 90%;
 }
 
-.timezone-info {
-  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-  color: #888;
-  margin-top: 5px;
-}
-
 .birthday-message {
   font-size: clamp(1.1rem, 3.5vw, 1.4rem);
   font-weight: 600;
@@ -137,23 +127,13 @@ body {
   margin-top: 2rem;
   animation: pulse 1.5s infinite;
   text-align: center;
-  padding: 15px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(21, 161, 237, 0.15);
-  max-width: 90%;
+  padding: 0 15px;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 /* Content elements */
@@ -177,18 +157,12 @@ body {
   padding: 15px;
   position: relative;
   width: min(90%, 600px);
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .text-box p {
   margin: 0;
   text-align: left;
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  line-height: 1.6;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 .text-box span {
@@ -204,23 +178,13 @@ body {
   position: absolute;
   right: 0px;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
-  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-
-/* Fix for "That's what I was going to do" text */
 .five p {
   font-size: clamp(1.2rem, 4vw, 2rem);
   position: relative;
-  margin: 15px auto;
-  max-width: 90%;
-  padding: 0 15px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.idea-1 {
-  margin-top: 30px !important; /* Add more space above this text */
+  margin: 10px auto;
 }
 
 .idea-3 {
@@ -237,9 +201,7 @@ body {
   font-size: clamp(2.5rem, 8vw, 4rem);
 }
 
-.idea-5 span,
-.idea-6 span,
-.wish-hbd span {
+.idea-5 span, .idea-6 span, .wish-hbd span {
   display: inline-block;
 }
 
@@ -259,8 +221,7 @@ body {
   display: block;
   height: auto;
   max-width: min(90%, 350px);
-  border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
 }
 
 .six .hat {
@@ -290,8 +251,7 @@ body {
   left: 30%;
 }
 
-.seven,
-.eight {
+.seven, .eight {
   height: 100vh;
   position: fixed;
   top: 0;
@@ -364,7 +324,6 @@ body {
 .wish {
   padding: 0 20px;
   margin-top: 20px;
-  max-width: 90%;
 }
 
 .wish-hbd {
@@ -382,67 +341,60 @@ body {
 .nine {
   padding: 0 20px;
   text-align: center;
-  max-width: 90%;
-  margin: 0 auto;
 }
 
 .nine p {
   font-size: clamp(1.1rem, 3.5vw, 2rem);
   font-weight: lighter;
   margin: 15px 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
+#replay {
+  cursor: pointer;
+  z-index: 3;
+  text-decoration: underline;
+  color: #15a1ed;
+  display: inline-block;
+  margin-top: 10px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+}
 
 /* Responsive Adjustments */
 @media screen and (max-height: 700px) {
+  
   .six img.profile-picture {
     max-width: min(80%, 280px);
   }
-
+  
   .countdown h1 {
     margin-bottom: 10px;
   }
-
+  
   .countdown-timer {
     margin: 0.5rem 0;
-  }
-  
-  .idea-1 {
-    margin-top: 20px !important; /* Less space on smaller heights */
   }
 }
 
 @media screen and (max-width: 480px) {
   .four .text-box {
-    padding: 15px;
+    padding: 10px;
   }
-
+  
   .text-box .fake-btn {
     bottom: -40px;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.8rem;
   }
-
+  
   .idea-5 span {
     display: block;
   }
-
+  
   .six .hat {
     width: 50px;
     max-width: 15%;
-    top: 180px;  }
-
-  .baloons img {
-    max-width: 70vw;
-  }
-
-  .five p {
-    padding: 0 10px;
-    font-size: clamp(1rem, 4vw, 1.8rem);
   }
   
-  .idea-1 {
-    margin-top: 25px !important; /* Adjust for mobile */
+  .baloons img {
+    max-width: 70vw;
   }
 }
