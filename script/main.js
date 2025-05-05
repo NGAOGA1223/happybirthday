@@ -41,7 +41,7 @@ const initializeClock = (nextBirthday) => {
     const countdownElement = document.createElement('div');
     countdownElement.className = 'countdown';
     countdownElement.innerHTML = `
-        <img src="https://c.tenor.com/xo5cxbOgS8sAAAAd/tenor.gif" id="gif"></img>
+        <img src="./img/mai_anh_jumpscare.png" id="gif"></img>
         <h1>Mai Anh's Birthday Countdown</h1>
         <div class="countdown-timer">
             <div class="countdown-item">
