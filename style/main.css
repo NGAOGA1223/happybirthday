@@ -392,6 +392,7 @@ body {
   .six .hat {
     width: 50px;
     max-width: 15%;
+    margin-top: 80px;
   }
   
   .baloons img {
