@@ -178,6 +178,7 @@ body {
   position: absolute;
   right: 0px;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
+  cursor: pointer;
 }
 
 .five p {
@@ -205,7 +206,7 @@ body {
 }
 
 .idea-6 span {
-  font-size: clamp(2.5rem, 9vw, 10rem);
+  font-size: clamp(5rem, 15vw, 15rem);
 }
 
 .six {
@@ -349,6 +350,7 @@ body {
 }
 
 #replay {
+  cursor: pointer;
   z-index: 3;
   text-decoration: underline;
   color: #15a1ed;
@@ -387,16 +389,12 @@ body {
     display: block;
   }
   
-  .six  {
+  .six .hat {
     width: 50px;
     max-width: 15%;
     margin-top: 80px;
   }
   
-  .hat {
-    display: none;
-  }
-
   .baloons img {
     max-width: 70vw;
   }
