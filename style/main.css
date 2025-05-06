@@ -387,12 +387,16 @@ body {
     display: block;
   }
   
-  .six .hat {
+  .six  {
     width: 50px;
     max-width: 15%;
     margin-top: 80px;
   }
   
+  .hat {
+    visibility: hidden;
+  }
+
   .baloons img {
     max-width: 70vw;
   }
