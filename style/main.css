@@ -394,7 +394,7 @@ body {
   }
   
   .hat {
-    visibility: hidden;
+    display: none;
   }
 
   .baloons img {
