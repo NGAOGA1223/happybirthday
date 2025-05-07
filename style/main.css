@@ -179,7 +179,6 @@ body {
   position: absolute;
   right: 0px;
   font-size: clamp(0.8rem, 2.5vw, 1rem);
-  cursor: pointer;
 }
 
 .five p {
@@ -354,7 +353,6 @@ body {
 }
 
 #replay {
-  cursor: pointer;
   z-index: 3;
   text-decoration: underline;
   color: #15a1ed;
