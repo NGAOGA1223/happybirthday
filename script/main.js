@@ -42,7 +42,7 @@ const initializeClock = (nextBirthday) => {
     countdownElement.className = 'countdown';
     countdownElement.innerHTML = `
         <img src="./img/mai_anh_jumpscare.png" id="gif"></img>
-        <h1>Mai Anh's Birthday Countdown</h1>
+        <h1>m.anh's Birthday Countdown</h1>
         <div class="countdown-timer">
             <div class="countdown-item">
                 <span class="days">00</span>
