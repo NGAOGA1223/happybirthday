@@ -222,7 +222,7 @@ body {
   display: block;
   height: auto;
   border-radius: 70%;
-  border-color: #bd6ecf;
+  border-color: #8cc270;
   max-width: min(90%, 350px);
 
 }
@@ -271,7 +271,7 @@ body {
 }
 
 .eight svg:nth-child(1) {
-  fill: #bd6ecf;
+  fill: #8cc270;
   left: 5vw;
   top: 7vh;
 }
@@ -307,7 +307,7 @@ body {
 }
 
 .eight svg:nth-child(7) {
-  fill: #e3bae8;
+  fill: #8cc270;
   left: 83vw;
   top: 68vh;
 }
