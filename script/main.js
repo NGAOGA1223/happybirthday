@@ -41,7 +41,7 @@ const initializeClock = (nextBirthday) => {
     const countdownElement = document.createElement('div');
     countdownElement.className = 'countdown';
     countdownElement.innerHTML = `
-        <img src="./img/mai_anh_jumpscare.png" id="gif"></img>
+        <img src="./img/maianhbg.jpg" id="gif"></img>
         <h1>m.anh's Birthday Countdown</h1>
         <div class="countdown-timer">
             <div class="countdown-item">
