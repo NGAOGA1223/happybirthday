@@ -221,7 +221,7 @@ body {
 .six img.profile-picture {
   display: block;
   height: auto;
-  border-radius: 70%;
+  border-radius: 50%;
   border-color: #8cc270;
   max-width: min(90%, 350px);
 
